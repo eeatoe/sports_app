@@ -1,0 +1,237 @@
+Started GET "/" for 127.0.0.1 at 2024-10-04 07:33:35 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241004031036_create_users.rb
+
+
+):
+  
+activerecord (7.1.4) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.4) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.4) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.4) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.4) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (53.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "backend_development"[0m
+  [1m[35m (48.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "backend_test"[0m
+  [1m[35m (86.7ms)[0m  [1m[35mCREATE DATABASE "backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (46.0ms)[0m  [1m[35mCREATE DATABASE "backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-04 12:04:23.569783', '2024-10-04 12:04:23.569785') RETURNING "key"[0m
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241004031036') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/registration" for ::1 at 2024-10-04 08:05:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::RegistrationController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "1234567890",
+    }
+}
+Started POST "/api/v1/registration" for ::1 at 2024-10-04 08:07:11 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/registration"):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "1234567890",
+    }
+}
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 08:08:20 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/ne_sergey/Desktop/bandits_app/backend/app/controllers/api/v1/registrations_controller.rb:18: syntax error, unexpected end-of-input, expecting `end' or dummy end):
+  
+app/controllers/api/v1/registrations_controller.rb:18: syntax error, unexpected end-of-input, expecting `end' or dummy end
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "1234567890",
+    }
+}
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 08:08:39 -0400
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "1234567890",
+    }
+}
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 08:08:46 -0400
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 08:10:38 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 12:10:39.133086"], ["updated_at", "2024-10-04 12:10:39.133086"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 16.6ms | Allocations: 19622)
+
+
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:14:11 -0400
+  
+SyntaxError (/home/ne_sergey/Desktop/bandits_app/backend/app/controllers/concerns/current_user_concern.rb:11: syntax error, unexpected end-of-input, expecting `end' or dummy end):
+  
+app/controllers/concerns/current_user_concern.rb:11: syntax error, unexpected end-of-input, expecting `end' or dummy end
+app/controllers/api/v1/sessions_controller.rb:2:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 08:46:09 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test1@test.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 12:46:10.182268"], ["updated_at", "2024-10-04 12:46:10.182268"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:3:in `create'
+Completed 200 OK in 202ms (Views: 0.2ms | ActiveRecord: 13.4ms | Allocations: 8204)
+
+
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:55:02 -0400
+  
+ArgumentError (wrong number of arguments (given 0, expected 1+)):
+  
+app/controllers/concerns/current_user_concern.rb:4:in `include'
+app/controllers/concerns/current_user_concern.rb:4:in `<module:CurrentUserConcern>'
+app/controllers/concerns/current_user_concern.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:2:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:55:36 -0400
+  
+ArgumentError (wrong number of arguments (given 0, expected 1+)):
+  
+app/controllers/concerns/current_user_concern.rb:4:in `include'
+app/controllers/concerns/current_user_concern.rb:4:in `<module:CurrentUserConcern>'
+app/controllers/concerns/current_user_concern.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:2:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:56:49 -0400
+Processing by Api::V1::SessionsController#check as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 11482)
+
+
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:57:22 -0400
+Processing by Api::V1::SessionsController#check as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 707)
+
+
+Started DELETE "/api/v1/sessions/logout" for ::1 at 2024-10-04 08:57:40 -0400
+Processing by Api::V1::SessionsController#logout as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 204 No Content in 2ms (ActiveRecord: 0.2ms | Allocations: 664)
+
+
+Started GET "/api/v1/sessions/check" for ::1 at 2024-10-04 08:57:53 -0400
+Processing by Api::V1::SessionsController#check as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 235)
+
+
