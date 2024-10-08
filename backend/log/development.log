@@ -235,3 +235,992 @@ Processing by Api::V1::SessionsController#check as */*
 Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 235)
 
 
+Started GET "/api/v1/registrations" for ::1 at 2024-10-04 12:39:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/registrations"):
+  
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:39:30 -0400
+  
+SyntaxError (/home/ne_sergey/Desktop/bandits_app/backend/app/controllers/api/v1/registrations_controller.rb:11: syntax error, unexpected local variable or method, expecting '}'
+        token: token
+        ^~~~~
+):
+  
+app/controllers/api/v1/registrations_controller.rb:11: syntax error, unexpected local variable or method, expecting '}'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:40:05 -0400
+  
+NameError (uninitialized constant ApplicationController::JsonWebTokenConcern):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:40:27 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:40:27.577547"], ["updated_at", "2024-10-04 16:40:27.577547"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 250ms (Views: 0.3ms | ActiveRecord: 15.8ms | Allocations: 22473)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:42:41 -0400
+  
+SyntaxError (/home/ne_sergey/Desktop/bandits_app/backend/app/controllers/api/v1/registrations_controller.rb:15: syntax error, unexpected local variable or method, expecting '}'
+        token: token
+        ^~~~~
+):
+  
+app/controllers/api/v1/registrations_controller.rb:15: syntax error, unexpected local variable or method, expecting '}'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:42:58 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 198ms (Views: 0.1ms | ActiveRecord: 5.7ms | Allocations: 8599)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:43:05 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test1@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:43:05.891262"], ["updated_at", "2024-10-04 16:43:05.891262"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 196ms (ActiveRecord: 13.5ms | Allocations: 4469)
+
+
+  
+NoMethodError (undefined method `email' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:11:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:43:55 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 197ms (Views: 0.1ms | ActiveRecord: 4.9ms | Allocations: 8526)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:44:12 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:44:12.343811"], ["updated_at", "2024-10-04 16:44:12.343811"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 207ms (ActiveRecord: 17.3ms | Allocations: 4451)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:11:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:46:13 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 208ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 4693)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:46:24 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test3@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test3@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:46:24.825918"], ["updated_at", "2024-10-04 16:46:24.825918"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 202ms (ActiveRecord: 13.4ms | Allocations: 3334)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:11:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:49:25 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test3@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+User params: #<ActionController::Parameters {"email"=>"test3@mail.com", "password"=>"1234567890", "password_confirmation"=>"1234567890"} permitted: true>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test3@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+Completed 422 Unprocessable Content in 192ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 8595)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:50:18 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test4@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test4@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test4@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test4@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:50:18.421129"], ["updated_at", "2024-10-04 16:50:18.421129"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+User params: #<ActionController::Parameters {"email"=>"test4@mail.com", "password"=>"1234567890", "password_confirmation"=>"1234567890"} permitted: true>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 196ms (ActiveRecord: 12.8ms | Allocations: 4518)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:12:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test4@mail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test4@mail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test4@mail.com"], ["LIMIT", 1]]
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:54:55 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test5@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test5@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:54:56.134062"], ["updated_at", "2024-10-04 16:54:56.134062"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+User params: #<ActionController::Parameters {"email"=>"test5@mail.com", "password"=>"1234567890", "password_confirmation"=>"1234567890"} permitted: true>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 15.3ms | Allocations: 8326)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:12:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:55:27 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test6@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:55:27.318473"], ["updated_at", "2024-10-04 16:55:27.318473"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+User params: #<ActionController::Parameters {"email"=>"test6@mail.com", "password"=>"1234567890"} permitted: true>
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 10.7ms | Allocations: 3385)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:12:in `create'
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20241004031036'[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "backend_test" ENCODING = 'unicode'[0m
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:56:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241004031036_create_users.rb
+
+
+):
+  
+activerecord (7.1.4) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.4) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.4) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.4) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.4) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (8.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241004031036') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 12:56:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 16:56:53.991230"], ["updated_at", "2024-10-04 16:56:53.991230"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+User params: #<ActionController::Parameters {"email"=>"test@mail.com", "password"=>"1234567890", "password_confirmation"=>"1234567890"} permitted: true>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 228ms (ActiveRecord: 21.8ms | Allocations: 22527)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:12:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:11:56 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 193ms (ActiveRecord: 4.8ms | Allocations: 11474)
+
+
+  
+NoMethodError (undefined method `errors' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:17:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:12:14 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 196ms (Views: 0.5ms | ActiveRecord: 6.0ms | Allocations: 8703)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:12:32 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test1@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 17:12:32.986398"], ["updated_at", "2024-10-04 17:12:32.986398"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 13.6ms | Allocations: 4466)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/api/v1/registrations_controller.rb:11:in `create'
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:13:26 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 189ms (Views: 0.1ms | ActiveRecord: 4.4ms | Allocations: 8537)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:16:54 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 202ms (Views: 0.1ms | ActiveRecord: 5.2ms | Allocations: 8511)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:17:04 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 199ms (Views: 0.1ms | ActiveRecord: 4.7ms | Allocations: 8511)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:17:09 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test1@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 188ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 8499)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:17:27 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 17:17:27.977864"], ["updated_at", "2024-10-04 17:17:27.977864"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 198ms (Views: 0.1ms | ActiveRecord: 14.7ms | Allocations: 4140)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:21:49 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Content in 191ms (Views: 0.1ms | ActiveRecord: 5.0ms | Allocations: 8531)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:21:53 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test3@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test3@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test3@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 17:21:53.316080"], ["updated_at", "2024-10-04 17:21:53.316080"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 196ms (Views: 0.1ms | ActiveRecord: 12.1ms | Allocations: 4138)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:22:21 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test4@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test4@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test4@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test4@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 17:22:21.531750"], ["updated_at", "2024-10-04 17:22:21.531750"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 211ms (Views: 0.1ms | ActiveRecord: 15.4ms | Allocations: 7945)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-04 13:22:45 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test5@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test5@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-04 17:22:45.387698"], ["updated_at", "2024-10-04 17:22:45.387698"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 210ms (Views: 0.1ms | ActiveRecord: 14.2ms | Allocations: 8019)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-04 13:40:50 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 10ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 4556)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:30:56 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::UsersController):
+  
+actionpack (7.1.4) lib/abstract_controller/base.rb:155:in `process'
+actionview (7.1.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.4) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test5@mail.com",
+        "password": "1234567890",
+    }
+}
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:31:10 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "user": {
+        "email": "test5@mail.com",
+        "password": "1234567890",
+    }
+}
+Processing by Api::V1::UsersController#show as */*
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2062)
+
+
+  
+NoMethodError (undefined method `[]' for nil):
+  
+app/controllers/concerns/current_user_concern.rb:11:in `set_current_user'
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:31:17 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1149)
+
+
+  
+NoMethodError (undefined method `[]' for nil):
+  
+app/controllers/concerns/current_user_concern.rb:11:in `set_current_user'
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:34:34 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1107)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:34:42 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 854)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:38:28 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 496)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-05 21:38:48 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test6@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-06 01:38:48.942219"], ["updated_at", "2024-10-06 01:38:48.942219"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 228ms (Views: 0.1ms | ActiveRecord: 11.1ms | Allocations: 16663)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:39:10 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 493)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:39:15 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 494)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:39:26 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :set_current_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 493)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:40:10 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1913)
+
+
+Started GET "/api/v1/users" for ::1 at 2024-10-05 21:42:11 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 3.0ms | Allocations: 4500)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:43:17 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test5@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1531)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:43:24 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1478)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:43:27 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1467)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:43:36 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1475)
+
+
+Started POST "/api/v1/users" for ::1 at 2024-10-05 21:44:17 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/users"):
+  
+Started POST "/api/v1/users" for ::1 at 2024-10-05 21:44:17 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/users"):
+  
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:51:21 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `destroy'
+Completed 401 Unauthorized in 15ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 7679)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:54:41 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Params: #<ActionController::Parameters {"user"=>{"email"=>"test6@mail.com", "password"=>"1234567890"}, "controller"=>"api/v1/users", "action"=>"destroy"} permitted: false>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `destroy'
+Completed 401 Unauthorized in 11ms (Views: 0.1ms | ActiveRecord: 5.0ms | Allocations: 5066)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:56:26 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Params: #<ActionController::Parameters {"user"=>{"email"=>"test6@mail.com", "password"=>"1234567890"}, "controller"=>"api/v1/users", "action"=>"destroy"} permitted: false>
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `destroy'
+Completed 401 Unauthorized in 8ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 4999)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:57:58 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Params: #<ActionController::Parameters {"user"=>{"email"=>"test6@mail.com", "password"=>"1234567890"}, "controller"=>"api/v1/users", "action"=>"destroy"} permitted: false>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `destroy'
+Completed 401 Unauthorized in 189ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 5053)
+
+
+Started DELETE "/api/v1/users" for ::1 at 2024-10-05 21:58:05 -0400
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authenticate_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:14:in `set_current_user'
+Params: #<ActionController::Parameters {"user"=>{"email"=>"test6@mail.com", "password"=>"1234567890"}, "controller"=>"api/v1/users", "action"=>"destroy"} permitted: false>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `destroy'
+  [1m[36mUser Destroy (9.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `destroy'
+Completed 200 OK in 204ms (Views: 0.1ms | ActiveRecord: 14.4ms | Allocations: 6399)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-05 22:00:45 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test6@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test6@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-06 02:00:45.525377"], ["updated_at", "2024-10-06 02:00:45.525377"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 211ms (Views: 0.1ms | ActiveRecord: 19.7ms | Allocations: 7980)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-06 23:14:25 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test7@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test7@mail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-07 03:14:25.793796"], ["updated_at", "2024-10-07 03:14:25.793796"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 247ms (Views: 0.4ms | ActiveRecord: 20.7ms | Allocations: 22335)
+
+
+Started POST "/api/v1/authentication" for ::1 at 2024-10-06 23:40:42 -0400
+  
+SyntaxError (/home/ne_sergey/Desktop/bandits_app/backend/app/controllers/api/v1/authentication_controller.rb:37: syntax error, unexpected local variable or method, expecting '}'
+          message: 'Token has expired or is in...
+          ^~~~~~~
+):
+  
+app/controllers/api/v1/authentication_controller.rb:37: syntax error, unexpected local variable or method, expecting '}'
+Started POST "/api/v1/authentication" for ::1 at 2024-10-06 23:41:49 -0400
+Processing by Api::V1::AuthenticationController#create as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}}}
+Filter chain halted as :set_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 637)
+
+
+Started POST "/api/v1/authentication" for ::1 at 2024-10-06 23:43:00 -0400
+Processing by Api::V1::AuthenticationController#create as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}}}
+Filter chain halted as :set_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 617)
+
+
+Started POST "/api/v1/authentication" for ::1 at 2024-10-06 23:45:38 -0400
+Processing by Api::V1::AuthenticationController#create as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}}}
+Filter chain halted as :set_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 618)
+
+
+Started POST "/api/v1/sessions" for ::1 at 2024-10-06 23:48:09 -0400
+  
+ActionController::RoutingError (uninitialized constant Api::V1::SessionsController):
+  
+Started POST "/api/v1/sessions" for ::1 at 2024-10-06 23:48:46 -0400
+  
+ActionController::RoutingError (uninitialized constant Api::V1::SessionsController):
+  
+Started POST "/api/v1/sessions" for ::1 at 2024-10-06 23:53:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test7@mail.com", "password"=>"[FILTERED]"}}}
+Filter chain halted as :set_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1543)
+
+

@@ -1,42 +1,43 @@
 class Api::V1::SessionsController < ApplicationController
   include CurrentUserConcern
 
-  # POST /api/v1/sessions
-  def create
-    user = User.find_by(email: params["user"]["email"])
+  # POST /api/v1/authentication
+  def login
+    user = User.find_by(email: session_params[:email])
     
-    if user&.authenticate(params["user"]["password"])
-      session[:user_id] = user.id
-      render json: {
-        status: :created,
-        logged_in: true,
-        user: user
-      }
+    if user&.authenticate(session_params[:password])
+      token = JsonWebToken.encode(user_id: user.id)
+      render json: { token: token }, status: :ok
     else
-      render json: { status: 401 }
+      render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
 
-  # DELETE /api/v1/sessions/logout
-  def logout
-    # Логаут нужно сделать просто удаляя токен на стороне клиента.
-    reset_session # Сброс данных сессии. Добовляет безопасность и убирает возможность конфликта с новой сессией
-    head :no_content # Возвращаем статус 204 без контента, что является хорошей практикой для успешного выхода.
-  end
+  # GET /api/v1/authentication/check 
+  # def check
+  #   if request.headers['Authorization'].present?
+  #     token = request.headers['Authorization'].split(' ').last
+  #     decoded_token = JsonWebToken.decode(token)
+  
+  #     if decoded_token && User.find_by(id: decoded_token[:user_id])
+  #       @current_user = User.find(decoded_token[:user_id])
+  #       render json: {
+  #         logged_in: true,
+  #         user: @current_user
+  #       }, status: :ok
+  #     else
+  #       render json: {
+  #         logged_in: false,
+  #         message: 'Token has expired or is invalid'
 
-  # GET /api/v1/sessions/check
-  def check
-    if @current_user
-      render json: {
-        logged_in: true,
-        user: @current_user
-      }
-    else
-      render json: {
-        logged_in: false
-      }
-    end
-  end
+  #       }, status: :unauthorized
+  #     end
+  #   else
+  #     render json: {
+  #       logged_in: false
+  #     }, status: :unauthorized
+  #   end  
+  # end
 
   private
 

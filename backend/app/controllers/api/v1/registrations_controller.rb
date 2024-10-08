@@ -1,17 +1,22 @@
 class Api::V1::RegistrationsController < ApplicationController
+  skip_before_action :authenticate_request, only: [:create] 
+  # Указываем, что не нужно быть зарегистрированным для "create"
 
   # POST api/v1/registrations
   def create
     user = User.create(user_params)
 
-    if user
-      session[:user_id] = user.id
+    if user.save
+      token = JsonWebToken.encode(user_id: user.id, email: user.email)
       render json: {
-        status: :created,
-        user: user
-      }
+        id: user.id,
+        email: user.email,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        token: token
+      }, status: :created
     else
-      render json: { status: 500 }
+      render json: { status: 422 }, status: :unprocessable_entity
     end
   end
 

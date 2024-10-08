@@ -25,14 +25,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Ссылки.md",
+                "file": "Expo.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -159,13 +158,13 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "3667aaa5ae8445b0",
+  "active": "b98a3a6f6d55dac0",
   "lastOpenFiles": [
+    "Expo.md",
+    "Ruby on Rails (RoR).md",
+    "Ссылки и полезные сервисы.md",
     "Описание компонентов Rails-приложения/Авторизация и аутентификация.md",
     "Без названия.md",
-    "Описание компонентов Rails-приложения",
-    "Ruby on Rails (RoR).md",
-    "Ссылки.md",
-    "Expo.md"
+    "Описание компонентов Rails-приложения"
   ]
 }
