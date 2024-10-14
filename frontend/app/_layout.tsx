@@ -3,7 +3,7 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen
-        name="sports_app"
+        name="index"
         options={{
           // headerShown: false, раскоментируй если нужно убрать название маршрутизации
           headerStyle: {
