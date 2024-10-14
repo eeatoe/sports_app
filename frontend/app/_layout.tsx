@@ -5,10 +5,11 @@ export default function RootLayout() {
       <Stack.Screen
         name="sports_app"
         options={{
+          // headerShown: false, раскоментируй если нужно убрать название маршрутизации
           headerStyle: {
-            backgroundColor: '#1F1F1F', // Задал задний фон
+            backgroundColor: '#fff', // Задал задний фон
           },
-          headerTintColor: '#fff', // Цвет текста и иконок на верхней панели
+          headerTintColor: '#1F1F1F', // Цвет текста и иконок на верхней панели
         }}
       />
     </Stack>
