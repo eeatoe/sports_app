@@ -14,7 +14,7 @@ export default function index() {
     alert('Интерактивности нету типа, ты типа скипнул жостка!');
   };
   const continueButtonPress = () => {
-
+    
   }
 
   const imageWelcome = require("@/assets/images/welcome_image1.png");
@@ -34,10 +34,10 @@ export default function index() {
             <View style={[styles.dot, currentPage === 0 && styles.activeDot]} />
             <View style={[styles.dot, currentPage === 1 && styles.activeDot]} />
         </View>
-        <Text style={styles.caption}>Тренируйтесь правильно</Text>
-        <Text style={styles.caption2}> Покажем, как выполнять</Text>
-        <Text style={styles.caption2}> упражнения эффективно</Text>
-        <Text style={styles.caption2}> и без вреда для вашего здоровья</Text>
+        <View>
+          <Text style={styles.caption}>Тренируйтесь правильно</Text>
+          <Text style={styles.caption2}>Покажем, как выполнять упражнения эффективно и без вреда для вашего здоровья</Text>
+        </View>
         <TouchableOpacity style={styles.continueButton} onPress={undefined}>
           <Text style={styles.continueButtonText}>Продолжить</Text>
         </TouchableOpacity>
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 0,
     textAlign: "center",
+    paddingHorizontal: 76,
   },
   continueButton: {
     backgroundColor: '#007BFF', // Цвет кнопки
