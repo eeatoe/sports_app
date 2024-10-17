@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
+
+const { width, height } = Dimensions.get('window');
 
 export default function index() {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -21,7 +23,7 @@ export default function index() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <TouchableOpacity style={styles.button_skip} onPress={handleButtonPress}>
         <Text style={styles.buttonText}>пропустить</Text>
       </TouchableOpacity>
@@ -35,9 +37,11 @@ export default function index() {
             <View style={[styles.dot, currentPage === 1 && styles.activeDot]} />
         </View>
         <View>
-          <Text style={styles.caption}>Тренируйтесь правильно</Text>
-          <Text style={styles.caption2}>Покажем, как выполнять упражнения эффективно и без вреда для вашего здоровья</Text>
+          <Text style={styles.title}>Тренируйтесь правильно</Text>
+          <Text style={styles.paragraph}>Покажем, как выполнять упражнения эффективно и без вреда для вашего здоровья</Text>
         </View>
+      </View>
+      <View style={styles.imageContainer2}>
         <TouchableOpacity style={styles.continueButton} onPress={undefined}>
           <Text style={styles.continueButtonText}>Продолжить</Text>
         </TouchableOpacity>
@@ -71,9 +75,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  imageContainer2: {
+    color: '#a83232',
+    flex: 0,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
   image: {
-    width: 311,
-    height: 291,
+    width: width-(width*0.1),
+    height: height-(height*0.7),
     borderRadius: 18,
     marginTop: 197,
   },
@@ -92,14 +102,14 @@ const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: '#007BFF',
   },
-  caption: {
+  title: {
     color: '#fff',
     fontSize: 22,
     marginTop: 20, // Отступ от индикатора
     textAlign: 'center', // Выравнивание текста по центру
     marginBottom: 25
   },
-  caption2: {
+  paragraph: {
     color: "#fff",
     fontSize: 16,
     marginTop: 0,
@@ -109,9 +119,10 @@ const styles = StyleSheet.create({
   continueButton: {
     backgroundColor: '#007BFF', // Цвет кнопки
     paddingVertical: 12,
-    paddingHorizontal: 130,
+    width: width-20,
+    marginHorizontal: 10,
+    marginVertical: 10,
     borderRadius: 25,
-    marginTop: 50, // Отступ вниз от текста
   },
   continueButtonText: {
     color: '#fff',
