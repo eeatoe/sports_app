@@ -3,17 +3,20 @@ import { Text, View, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from
 import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
 import { useNavigation } from '@react-navigation/native'; // для маршрутизации
+import { Redirect } from "expo-router"
 
 const { width, height } = Dimensions.get('window');
 
 export default function Index() {
+  //далее идёт логика редиректа в логин
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const navigation = useNavigation(); // для навигации на другие страницы
-
-  const handleSkipPress = () => {
-    // Если последний слайд, то ведет на регистрацию, НЕ ЗАБЫТЬ ВСТАВИТЬ СТРАНИЦУ
-    navigation.navigate('Регистрация кста'); // вставь сюда название страницы
+  const [redirectlogin, setRedirectlogin] = useState(false);
+  const handleRedirectLogin = () => {
+    setRedirectlogin(true);
   };
+  if (redirectlogin) {
+    return <Redirect href="/Login" />; 
+  }
 
   const images = [
     {
@@ -39,14 +42,14 @@ export default function Index() {
       setCurrentPage(currentPage + 1);
     } else {
       // Если последний слайд, то ведет на регистрацию, НЕ ЗАБЫТЬ ВСТАВИТЬ СТРАНИЦУ
-      navigation.navigate('Регистрация кста'); // вставь сюда название страницы
+      handleRedirectLogin; // вставь сюда название страницы
     }
   };
 
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <TouchableOpacity style={styles.button_skip} onPress={handleSkipPress}>
+      <TouchableOpacity style={styles.button_skip} onPress={handleRedirectLogin}>
         <Text style={styles.buttonText}>Пропустить</Text>
       </TouchableOpacity>
 
