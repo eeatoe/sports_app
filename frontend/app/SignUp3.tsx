@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Login = () => {
+const SignUp3 = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>логин</Text>
+      <Text style={styles.text}>регистрация3</Text>
     </View>
   );
 };
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignUp3;
