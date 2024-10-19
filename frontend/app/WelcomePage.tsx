@@ -42,7 +42,7 @@ export default function Index() {
       setCurrentPage(currentPage + 1);
     } else {
       // Если последний слайд, то ведет на регистрацию, НЕ ЗАБЫТЬ ВСТАВИТЬ СТРАНИЦУ
-      handleRedirectLogin; // вставь сюда название страницы
+      handleRedirectLogin(); // вставь сюда название страницы
     }
   };
 
