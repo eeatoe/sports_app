@@ -1,15 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function Login() {
   const router = useRouter();
   
+  interface IconWithTextProps {
+    iconSource: ImageSourcePropType; // Определяем тип для иконки
+    text: string; // Определяем тип для текста
+  }
+  
+  const IconWithText: React.FC<IconWithTextProps> = ({ iconSource, text }) => {
+    return (
+      <View style={styles.container}>
+        <Image source={iconSource} style={styles.icon} />
+        <Text style={styles.text}>{text}</Text>
+      </View>
+    );
+  };
+
   const handlePress = () => {
     router.push('/SignUp'); // Переход на экран с маршрутом '/SignUp'
   };
 
+  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
+  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google Logo.png');
+  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
   return (
+    
     <View style={styles.container}>
       <Text style={styles.text}>Вход</Text>
       <View style={styles.border}>
@@ -33,6 +51,18 @@ export default function Login() {
             <Text style={styles.separatorText}>или</Text>
             <View style={styles.separator} />
           </View>
+          <TouchableOpacity style={styles.facebook} onPress={undefined}>
+            <Image source={iconFacebook} style={styles.icon} />
+            <Text style={styles.continueButtonText}>Продолжить с Facebook</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.google} onPress={undefined}>
+            <Image source={iconGoogle} style={styles.icon} />
+            <Text style={{color: '#1F1F1F',fontSize: 16,textAlign: 'center'}}>Продолжить с Google</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Apple} onPress={undefined}>
+            <Image source={iconApple} style={styles.iconApple} />
+            <Text style={{color: '#fff',fontSize: 16,textAlign: 'center'}}>Продолжить с Apple</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -113,10 +143,49 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   facebook: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#007BFF',
-    paddingVertical: 18,
+    padding: 20,
     borderRadius: 25,
-    marginVertical: 10,
-    width: 200
+    marginTop: 25,
+    width: 311
+  },
+  google: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 25,
+    marginTop: 25,
+    width: 311
+  },
+  Apple: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#000000',
+    padding: 20,
+    borderRadius: 25,
+    marginTop: 25,
+    width: 311,
+  },
+    textMessanger: {
+    fontSize: 14,
+    color: "#fff",
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  icon: {
+    width: 24, // Ширина иконки
+    height: 24, // Высота иконки
+    marginRight: 10, // Отступ между иконкой и текстом
+  },
+  iconApple: {
+    width: 25, // Ширина иконки
+    height: 31, // Высота иконки
+    marginRight: 10, // Отступ между иконкой и текстом
   }
 });
