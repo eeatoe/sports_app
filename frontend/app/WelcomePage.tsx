@@ -7,7 +7,7 @@ import { Redirect } from "expo-router"
 
 const { width, height } = Dimensions.get('window');
 
-export default function Index() {
+export default function WelcomePage() {
   //далее идёт логика редиректа в логин
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [redirectlogin, setRedirectlogin] = useState(false);

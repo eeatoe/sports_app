@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter,Redirect } from 'expo-router';
 
 export default function Login() {
   const router = useRouter();
@@ -19,28 +19,35 @@ export default function Login() {
     );
   };
 
-  const handlePress = () => {
-    router.push('/SignUp'); // Переход на экран с маршрутом '/SignUp'
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [redirectlogin, setRedirectlogin] = useState(false);
+  const handleRedirectSignUp = () => {
+    setRedirectlogin(true);
   };
+  if (redirectlogin) {
+    return <Redirect href="/SignUp" />; 
+  }
 
   const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
-  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google Logo.png');
+  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
   const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
   return (
     
     <View style={styles.container}>
       <Text style={styles.text}>Вход</Text>
       <View style={styles.border}>
-        <Text style={{ fontSize: 14, color: "#fff" }}>email</Text>
-        <TextInput
+        <View style={{width: "100%"}}>
+          <Text style={{ fontSize: 14, color: "#fff",paddingLeft: 10, }}>email</Text>
+          <TextInput
           style={styles.input}
           placeholder="Введите Email"
           placeholderTextColor="#A0A0A0"
           textAlign="left"
-        />
-        <View style={styles.underline}></View>
+          />
+        </View>
         <View style={{ width: "100%", alignItems: "center" }}>
-          <Text style={styles.buttonSignUp} onPress={handlePress}>
+          <View style={styles.underline}></View>
+          <Text style={styles.buttonSignUp} onPress={handleRedirectSignUp }>
             Ещё нет аккаунта?
           </Text>
           <TouchableOpacity style={styles.continueButton} onPress={undefined}>
@@ -57,11 +64,11 @@ export default function Login() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.google} onPress={undefined}>
             <Image source={iconGoogle} style={styles.icon} />
-            <Text style={{color: '#1F1F1F',fontSize: 16,textAlign: 'center'}}>Продолжить с Google</Text>
+            <Text style={{color: '#000000',fontSize: 16,textAlign: 'center',opacity: 0.54}}>Продолжить с Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Apple} onPress={undefined}>
             <Image source={iconApple} style={styles.iconApple} />
-            <Text style={{color: '#fff',fontSize: 16,textAlign: 'center'}}>Продолжить с Apple</Text>
+            <Text style={{color: '#F5F5F5',fontSize: 16,textAlign: 'center'}}>Продолжить с Apple</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -102,15 +109,15 @@ const styles = StyleSheet.create({
     color: "#fff"
   },
   underline: {
-    marginBottom: 25,
+    marginBottom: 15,
     height: 2,
     backgroundColor: '#fff',
     marginTop: -20,
-    width: '100%',
+    width: '92%',
   },
   buttonSignUp: {
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: "left",
     fontSize: 12,
     color: "#A0A0A0",
     textDecorationLine: 'underline',
@@ -120,17 +127,18 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     borderRadius: 25,
     marginVertical: 10,
-    width: 200
+    width: "90%"
   },
   continueButtonText: {
-    color: '#fff',
+    color: '#F5F5F5',
     fontSize: 16,
     textAlign: 'center',
   },
   separatorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 30, // Отступ сверху и снизу для разделителя
+    marginTop: 40, // Отступ сверху и снизу для разделителя
+    marginBottom: 19
   },
   separator: {
     flex: 1,
@@ -139,25 +147,24 @@ const styles = StyleSheet.create({
     marginHorizontal: 5, // Отступ между текстом и полосами
   },
   separatorText: {
-    color: "#E5E8EE",
+    color: "#A0A0A0",
     fontSize: 16,
   },
   facebook: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#007BFF',
-    padding: 20,
+    padding: 18,
     borderRadius: 25,
-    marginTop: 25,
     width: 311
   },
   google: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 18,
     borderRadius: 25,
     marginTop: 25,
     width: 311
@@ -165,18 +172,12 @@ const styles = StyleSheet.create({
   Apple: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#000000',
-    padding: 20,
+    padding: 18,
     borderRadius: 25,
     marginTop: 25,
     width: 311,
-  },
-    textMessanger: {
-    fontSize: 14,
-    color: "#fff",
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   icon: {
     width: 24, // Ширина иконки

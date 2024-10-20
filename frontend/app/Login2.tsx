@@ -1,10 +1,51 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
+import { useRouter,Redirect } from 'expo-router';
 
-const Login2 = () => {
+export default function Login2() {
+  
+  interface IconWithTextProps {
+    iconSource: ImageSourcePropType; // Определяем тип для иконки
+    text: string; // Определяем тип для текста
+  }
+  
+  const IconWithText: React.FC<IconWithTextProps> = ({ iconSource, text }) => {
+    return (
+      <View style={styles.container}>
+        <Image source={iconSource} style={styles.icon} />
+        <Text style={styles.text}>{text}</Text>
+      </View>
+    );
+  };
+
+
+  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
+  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
+  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.text}>логин2</Text>
+      <Text style={styles.text}>Вход</Text>
+      <View style={styles.border}>
+        <View style={{width: "100%"}}>
+          <Text style={{ fontSize: 14, color: "#fff",paddingLeft: 10, }}>Пароль</Text>
+          <TextInput
+          style={styles.input}
+          placeholder="Введите пароль"
+          placeholderTextColor="#A0A0A0"
+          textAlign="left"
+          />
+        </View>
+        <View style={{ width: "100%", alignItems: "center" }}>
+          <View style={styles.underline}></View>
+          <Text style={styles.buttonSignUp} onPress={undefined}>
+            Забыли пароль?
+          </Text>
+          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+            <Text style={styles.continueButtonText}>Войти</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
@@ -12,14 +53,114 @@ const Login2 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#fff', // можно изменить цвет фона
+    backgroundColor: '#1F1F1F', 
+    paddingTop: 120
+  },
+  border: {
+    marginBottom: 40,
+    alignItems: "flex-start",
+    marginTop: 50,
+    borderRadius: 20,
+    width: 311,
+    height: 225,
+    borderWidth: 1,
+    borderColor: "#E5E8EE",
+    padding: 15,
   },
   text: {
-    fontSize: 24, // размер шрифта
-    fontWeight: 'bold', // жирный шрифт
+    fontSize: 34,
+    color: "#fff",
+    fontWeight: 'bold',
   },
+  input: {
+    height: 40,
+    borderColor: '#1F1F1F',
+    borderWidth: 1,
+    marginBottom: 16,
+    paddingHorizontal: 10,
+    color: "#fff"
+  },
+  underline: {
+    marginBottom: 15,
+    height: 2,
+    backgroundColor: '#fff',
+    marginTop: -20,
+    width: '92%',
+  },
+  buttonSignUp: {
+    marginBottom: 10,
+    textAlign: "left",
+    fontSize: 12,
+    color: "#A0A0A0",
+    textDecorationLine: 'underline',
+  },
+  continueButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 18,
+    borderRadius: 25,
+    marginVertical: 10,
+    width: "90%"
+  },
+  continueButtonText: {
+    color: '#F5F5F5',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  separatorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 40, // Отступ сверху и снизу для разделителя
+    marginBottom: 19
+  },
+  separator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#A0A0A0', // Цвет полос
+    marginHorizontal: 5, // Отступ между текстом и полосами
+  },
+  separatorText: {
+    color: "#A0A0A0",
+    fontSize: 16,
+  },
+  facebook: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#007BFF',
+    padding: 18,
+    borderRadius: 25,
+    width: 311
+  },
+  google: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
+    padding: 18,
+    borderRadius: 25,
+    marginTop: 25,
+    width: 311
+  },
+  Apple: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#000000',
+    padding: 18,
+    borderRadius: 25,
+    marginTop: 25,
+    width: 311,
+  },
+  icon: {
+    width: 24, // Ширина иконки
+    height: 24, // Высота иконки
+    marginRight: 10, // Отступ между иконкой и текстом
+  },
+  iconApple: {
+    width: 25, // Ширина иконки
+    height: 31, // Высота иконки
+    marginRight: 10, // Отступ между иконкой и текстом
+  }
 });
-
-export default Login2;
