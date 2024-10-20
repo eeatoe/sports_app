@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login2() {
   
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  const savePassword = async () => {
+    await AsyncStorage.setItem('password', password);
+      // router.push('/');  // Переход в меню
+  };
+
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
     text: string; // Определяем тип для текста
@@ -32,6 +41,8 @@ export default function Login2() {
           <TextInput
           style={styles.input}
           placeholder="Введите пароль"
+          value={password}
+          onChangeText={setPassword}
           placeholderTextColor="#A0A0A0"
           textAlign="left"
           />

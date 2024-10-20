@@ -1,10 +1,34 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
+
   const router = useRouter();
+
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [storedEmail, setStoredEmail] = useState<string | null>(null); 
+
+    const validateEmail = (email: string) => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+  };
   
+    const saveEmail = async () => {
+      if (validateEmail(email)) {
+        await AsyncStorage.setItem('email', email);
+        const storedValue = await AsyncStorage.getItem("email");
+        setStoredEmail(storedValue);
+        setError('');
+        router.push('/Login2');  // Переход на следующую страницу
+      } else {
+        setError('Неверный формат email');
+      }
+    };
+  
+
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
     text: string; // Определяем тип для текста
@@ -41,6 +65,8 @@ export default function Login() {
           <TextInput
           style={styles.input}
           placeholder="Введите Email"
+          value={email}
+          onChangeText={setEmail}
           placeholderTextColor="#A0A0A0"
           textAlign="left"
           />
@@ -50,7 +76,7 @@ export default function Login() {
           <Text style={styles.buttonSignUp} onPress={handleRedirectSignUp }>
             Ещё нет аккаунта?
           </Text>
-          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+          <TouchableOpacity style={styles.continueButton} onPress={saveEmail}>
             <Text style={styles.continueButtonText}>Далее</Text>
           </TouchableOpacity>
           <View style={styles.separatorContainer}>
