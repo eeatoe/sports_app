@@ -15,7 +15,7 @@ export default function WelcomePage() {
     setRedirectlogin(true);
   };
   if (redirectlogin) {
-    return <Redirect href="/Login" />; 
+    return <Redirect href="/SignUp3" />; 
   }
 
   const images = [
