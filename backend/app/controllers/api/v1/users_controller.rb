@@ -1,20 +1,17 @@
 class Api::V1::UsersController < ApplicationController
-  include CurrentUserConcern
-  before_action :require_no_authentication
-  before_action :require_authentication
-  before_action :set_user
+  skip_before_action :authenticate_request
 
   # DELETE api/v1/users/:id
   def destroy
-    Rails.logger.info "Params: #{params.inspect}"
-    user = User.find_by(email: user_params[:email])
+    user = User.find_by(id: params[:id])
 
-    if current_user.nil?
-      render json: { errors: 'User not authenticated.' }, status: :unauthorized
+    if user.nil?
+      render json: { errors: 'User not found.' }, status: :not_found
       return
     end
+  
 
-    if user && user.authenticate(user_params[:password]) && user.id == current_user.id
+    if user && user.authenticate(params[:user][:password])
       user.destroy
       render json: { message: 'User deleted successfully.' }, status: :ok
     else
@@ -24,7 +21,13 @@ class Api::V1::UsersController < ApplicationController
 
   # GET api/v1/users/:id
   def show
-    render json: current_user.as_json(except: [:password_digest]), status: :ok
+    @user = User.find_by(id: params[:id])
+
+    if @user
+      render :show, status: :ok
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
   end
 
   private

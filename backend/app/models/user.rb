@@ -1,10 +1,10 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
-  require "securerandom"
-  
   has_secure_password
   
-  validates :email, presence: true, uniqueness: true
+  # Строка 'valid_email_2/email': { disposable: true } проверяет, что домен не
+  # является одноразовым и что у него есть MX-запись. Наследуется от гема ValidEmail2
+  validates :email, 'valid_email_2/email': { disposable: true }, presence: true, uniqueness: true
   validates :password, presence: true
 end

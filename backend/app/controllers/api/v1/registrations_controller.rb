@@ -7,7 +7,7 @@ class Api::V1::RegistrationsController < ApplicationController
     user = User.create(user_params)
 
     if user.save
-      token = JsonWebToken.encode(user_id: user.id, email: user.email)
+      token = encode_token(user_id: user.id)
       render json: {
         id: user.id,
         email: user.email,
