@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authenticate_request
+  before_action :find_user, only: [:edit, :update, :destroy]
 
   # DELETE api/v1/users/:id
   def destroy
@@ -30,9 +30,22 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # PATCH /api/v1/users/:id
+  def update
+    if @user.update(user_params)
+      render json: { message: 'User updated successfully', user: @user }, status: :ok
+    else
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
+  def find_user
+    @user = current_user
+  end
+
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :name)
   end
 end

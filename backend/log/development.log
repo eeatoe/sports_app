@@ -37482,3 +37482,611 @@ Processing by Api::V1::UsersController#show as */*
 Completed 404 Not Found in 4ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 2477)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20241004031036'[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 192.168.1.34 at 2024-10-20 23:12:27 -0400
+Cannot render console from 192.168.1.34! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241004031036_create_users.rb
+
+
+):
+  
+activerecord (7.1.4) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.4) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.4) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.4) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.4) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.4) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.4) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241004031036)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying(64) NOT NULL, "name" character varying(20) NOT NULL, "birth_date" date NOT NULL, "gender" character varying, "height" integer, "weight" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241004031036') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 192.168.1.34 at 2024-10-20 23:13:02 -0400
+Cannot render console from 192.168.1.34! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 376)
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 4320)
+
+
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: tigers-lounge-remaining-assumptions.trycloudflare.com
+Started GET "/" for 2a12:5940:2c22::2 at 2024-10-20 23:54:24 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 377)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 4323)
+
+
+Started GET "/" for 34.83.203.92 at 2024-10-20 23:54:29 -0400
+Cannot render console from 34.83.203.92! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 290)
+
+
+Started GET "/" for 34.83.203.92 at 2024-10-20 23:54:29 -0400
+Cannot render console from 34.83.203.92! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started GET "/" for 34.83.203.92 at 2024-10-20 23:54:29 -0400
+Cannot render console from 34.83.203.92! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started GET "/" for 34.83.203.92 at 2024-10-20 23:54:29 -0400
+Cannot render console from 34.83.203.92! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-20 23:58:56 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 743ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 365268)
+
+
+Started POST "/api/v1/registrations" for ::1 at 2024-10-20 23:59:53 -0400
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 300ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 7441)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:00:48 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 303ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 7356)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:01:40 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 280ms (Views: 0.1ms | ActiveRecord: 2.2ms | Allocations: 7720)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:01:48 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Create (9.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test13@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", nil], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:01:48.607817"], ["updated_at", "2024-10-21 04:01:48.607817"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 507ms (ActiveRecord: 10.6ms | Allocations: 6340)
+
+
+  
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "birth_date" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, test13@mail.com, $2a$12$ZQxBux2Ku5L5nIqVP1PtG.PNto.95DcumvAlaj0B.9uN.75CeJbza, Oleg, null, null, null, null, 2024-10-21 04:01:48.607817, 2024-10-21 04:01:48.607817).
+):
+  
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:05:10 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test13@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:05:10.726714"], ["updated_at", "2024-10-21 04:05:10.726714"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test13@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 303ms (Views: 0.2ms | ActiveRecord: 15.3ms | Allocations: 13664)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:06:44 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test13@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:06:45.079124"], ["updated_at", "2024-10-21 04:06:45.079124"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 4.0ms | Allocations: 8512)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(test13@mail.com) already exists.
+):
+  
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:06:54 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test13@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:06:55.171274"], ["updated_at", "2024-10-21 04:06:55.171274"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 193ms (ActiveRecord: 3.2ms | Allocations: 8375)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(test13@mail.com) already exists.
+):
+  
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:08:01 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test13@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test13@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:08:01.963229"], ["updated_at", "2024-10-21 04:08:01.963229"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 3.7ms | Allocations: 8305)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(test13@mail.com) already exists.
+):
+  
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:09:29 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test14@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test14@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test14@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:09:29.786682"], ["updated_at", "2024-10-21 04:09:29.786682"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 190ms (Views: 0.1ms | ActiveRecord: 11.5ms | Allocations: 2185)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:09:39 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test15@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test15@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test15@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:09:40.063446"], ["updated_at", "2024-10-21 04:09:40.063446"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 195ms (Views: 0.1ms | ActiveRecord: 10.5ms | Allocations: 2004)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:09:51 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test16@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test16@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test16@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:09:51.641519"], ["updated_at", "2024-10-21 04:09:51.641519"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 211ms (Views: 0.1ms | ActiveRecord: 13.0ms | Allocations: 7786)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:10:02 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test17@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test17@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test17@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test17@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:10:02.371654"], ["updated_at", "2024-10-21 04:10:02.371654"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test17@mail.com"], ["LIMIT", 1]]
+  ↳ app/validators/email_validator.rb:9:in `validate'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:9:in `create'
+Completed 422 Unprocessable Content in 307ms (Views: 0.1ms | ActiveRecord: 15.8ms | Allocations: 13594)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 00:10:25 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test18@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 04:10:25.226930"], ["updated_at", "2024-10-21 04:10:25.226930"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 204ms (Views: 3.9ms | ActiveRecord: 13.8ms | Allocations: 7740)
+
+
+Started POST "/api/v1/sessions" for ::1 at 2024-10-21 00:11:17 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 202ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1138)
+
+
+Started GET "/" for 2a12:5940:2c22::2 at 2024-10-21 00:41:59 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ne_sergey/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 264)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 901)
+
+
+Started GET "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 00:42:39 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/sessions"):
+  
+Started POST "/api/v1/sessions" for ::1 at 2024-10-21 00:49:37 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 212ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 3527)
+
+
+Started POST "/api/v1/sessions" for ::1 at 2024-10-21 00:49:41 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 203ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 597)
+
+
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 00:49:53 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 207ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 598)
+
+
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 01:05:44 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 196ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 3511)
+
+
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 01:09:32 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 185ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 598)
+
+
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 01:09:35 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 185ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 598)
+
+
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 01:12:16 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 180ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 599)
+
+
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:23:34 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"email"=>"test18@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 490)
+
+
+  
+NoMethodError (undefined method `[]' for nil):
+  
+app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:29:23 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 188ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 3527)
+
+
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:33:26 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 187ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 597)
+
+
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:38:48 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 180ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 597)
+
+
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:38:55 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 206ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 597)
+
+
+Started POST "/api/v1/sessions" for 94.232.233.121 at 2024-10-21 01:41:21 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 181ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 598)
+
+
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: samoa-hint-delay-extending.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: samoa-hint-delay-extending.trycloudflare.com
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: samoa-hint-delay-extending.trycloudflare.com
+Started POST "/api/v1/sessions" for 2a12:5940:2c22::2 at 2024-10-21 09:00:50 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test18@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:10:in `create'
+Completed 200 OK in 218ms (Views: 0.2ms | ActiveRecord: 9.9ms | Allocations: 20462)
+
+
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 10:20:14 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test18@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Oleg", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (8.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test18@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Oleg"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 14:20:14.227433"], ["updated_at", "2024-10-21 14:20:14.227433"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 500 Internal Server Error in 212ms (ActiveRecord: 11.4ms | Allocations: 7479)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(test18@mail.com) already exists.
+):
+  
+Started POST "/api/v1/registrations" for 2a12:5940:2c22::2 at 2024-10-21 10:21:28 -0400
+Cannot render console from 2a12:5940:2c22::2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"user"=>{"email"=>"test30@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Olega", "birth_date"=>"1990-01-01"}, "registration"=>{"user"=>{"email"=>"test30@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Olega", "birth_date"=>"1990-01-01"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test30@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Olega"], ["birth_date", "1990-01-01"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 14:21:28.288400"], ["updated_at", "2024-10-21 14:21:28.288400"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 216ms (Views: 0.1ms | ActiveRecord: 13.3ms | Allocations: 2207)
+
+
+Started POST "/api/v1/registrations" for 94.232.233.121 at 2024-10-21 10:22:59 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test30@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buharik", "birth_date"=>"2013-10-09"}, "registration"=>{"user"=>{"email"=>"test30@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buharik", "birth_date"=>"2013-10-09"}}}
+Completed 422 Unprocessable Content in 203ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1301)
+
+
+Started POST "/api/v1/registrations" for 94.232.233.121 at 2024-10-21 10:27:37 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test40@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buharik", "birth_date"=>"2014-09-14"}, "registration"=>{"user"=>{"email"=>"test40@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buharik", "birth_date"=>"2014-09-14"}}}
+Completed 422 Unprocessable Content in 184ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1260)
+
+
+Started POST "/api/v1/registrations" for 94.232.233.121 at 2024-10-21 10:28:14 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test40@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buhik", "birth_date"=>"2014-09-14"}, "registration"=>{"user"=>{"email"=>"test40@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buhik", "birth_date"=>"2014-09-14"}}}
+Completed 422 Unprocessable Content in 180ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1258)
+
+
+Started POST "/api/v1/registrations" for 94.232.233.121 at 2024-10-21 10:30:33 -0400
+Cannot render console from 94.232.233.121! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"test50@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buhik", "birth_date"=>"2012-11-10"}, "registration"=>{"user"=>{"email"=>"test50@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "name"=>"Buhik", "birth_date"=>"2012-11-10"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "birth_date", "gender", "height", "weight", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "test50@mail.com"], ["password_digest", "[FILTERED]"], ["name", "Buhik"], ["birth_date", "2012-11-10"], ["gender", nil], ["height", nil], ["weight", nil], ["created_at", "2024-10-21 14:30:33.874773"], ["updated_at", "2024-10-21 14:30:33.874773"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 201 Created in 210ms (Views: 0.2ms | ActiveRecord: 15.4ms | Allocations: 7847)
+
+

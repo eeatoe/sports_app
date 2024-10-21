@@ -1,6 +1,10 @@
 class Api::V1::SessionsController < ApplicationController
   skip_before_action :authenticate_request
 
+  def new
+    redirect_to root_path if logged_in?
+  end
+
   # POST /api/v1/sessions
   def create
     user = User.find_by(email: params[:user][:email])

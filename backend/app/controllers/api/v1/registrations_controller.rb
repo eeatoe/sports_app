@@ -11,8 +11,7 @@ class Api::V1::RegistrationsController < ApplicationController
       render json: {
         id: user.id,
         email: user.email,
-        created_at: user.created_at,
-        updated_at: user.updated_at,
+        name: user.name,
         token: token
       }, status: :created
     else
@@ -23,6 +22,6 @@ class Api::V1::RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :birth_date)
   end
 end

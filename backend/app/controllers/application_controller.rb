@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def logged_in?
+    !!current_user
+  end
+
   def current_user
     if decoded_token
       user_id = decoded_token[0]['user_id']
