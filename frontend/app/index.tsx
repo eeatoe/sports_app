@@ -8,9 +8,8 @@ export default function index () {
   useEffect(() => {
     const checkFirstLaunch = async () => {
       try {
-        // Очищаем кеш перед проверкой
-        await AsyncStorage.clear(); // Очищаем AsyncStorage
-
+        await AsyncStorage.removeItem('password');
+        await AsyncStorage.removeItem('hasLaunched'); // Очищаем AsyncStorage
         const alreadyLaunched = await AsyncStorage.getItem('hasLaunched');
         if (alreadyLaunched === null) {
           // Если приложение запускается впервые

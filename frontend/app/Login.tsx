@@ -2,16 +2,19 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { useRouter, Redirect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
 
 export default function Login() {
 
   const router = useRouter();
 
+//------Далее идёт логика ассинхронного хранилища email---------------------------
+
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const [storedEmail, setStoredEmail] = useState<string | null>(null); 
 
-    const validateEmail = (email: string) => {
+
+    const validateEmail = (email: string) => {  //проверка корректности эмэйл
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return regex.test(email);
   };
@@ -19,15 +22,13 @@ export default function Login() {
     const saveEmail = async () => {
       if (validateEmail(email)) {
         await AsyncStorage.setItem('email', email);
-        const storedValue = await AsyncStorage.getItem("email");
-        setStoredEmail(storedValue);
         setError('');
-        router.push('/Login2');  // Переход на следующую страницу
+        router.push('/Login2'); //переход на следующую стр
       } else {
-        setError('Неверный формат email');
+        Alert.alert('Неверный формат email');
       }
     };
-  
+//-------------Далее идёт код иконок Google, Apple и Facebook---------------
 
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
@@ -42,19 +43,24 @@ export default function Login() {
       </View>
     );
   };
+  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
+  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
+  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
 
-  const [currentPage, setCurrentPage] = useState<number>(0);
+//----------Логика редиректа кнопки "нету аккаунта?"-----------------------------
+
   const [redirectlogin, setRedirectlogin] = useState(false);
   const handleRedirectSignUp = () => {
     setRedirectlogin(true);
   };
   if (redirectlogin) {
-    return <Redirect href="/SignUp" />; 
+    const sendDataToServer = async () => {
+      await AsyncStorage.removeItem('email')
+      
+    }
+    return  <Redirect href="/SignUp" />; 
   }
-
-  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
-  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
-  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+//-------------------------------------------------------------------------------
   return (
     
     <View style={styles.container}>
