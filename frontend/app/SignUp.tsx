@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { useRouter, Redirect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
 
 export default function SignUp() {
 
@@ -22,7 +23,7 @@ export default function SignUp() {
         setError('');
         router.push('/SignUp2'); //переход на следующую стр
       } else {
-        setError('Неверный формат email');
+        Alert.alert('Неверный формат email');
       }
     };
 //----------------Далее идёт код иконок Google, Apple и Facebook-------------------------------------------

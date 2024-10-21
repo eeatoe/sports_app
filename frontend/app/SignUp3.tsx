@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_BASE_URL } from './config';
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -9,7 +11,99 @@ export default function SignUp() {
   const [year, setYear] = useState('');
   const [daysInMonth, setDaysInMonth] = useState<number[]>([]);
   const [isAgreed, setIsAgreed] = useState(false);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const [birthDate, setBirthDate] = useState('');
+//-----------подготовка данных к отправке на сервер------------------
+  const monthNames: { [key: string]: string } = {
+    Январь: '01',
+    Февраль: '02',
+    Март: '03',
+    Апрель: '04',
+    Май: '05',
+    Июнь: '06',
+    Июль: '07',
+    Август: '08',
+    Сентябрь: '09',
+    Октябрь: '10',
+    Ноябрь: '11',
+    Декабрь: '12',
+  };
+function formatBirthDate(day: number, month: string, year: number): string {
+  const monthNumber = monthNames[month];
+  if (!monthNumber) {
+    throw new Error('Некорректное название месяца');
+  }
+  
+  const formattedDay = day < 10 ? `0${day}` : day.toString();
+  return `${year}-${monthNumber}-${formattedDay}`;
+}
 
+useEffect(() => {
+  if (hasUserInteracted && day && month && year) {
+    const dayNumber = parseInt(day, 10);
+    const yearNumber = parseInt(year, 10);
+    if (!isNaN(dayNumber) && !isNaN(yearNumber) && monthNames[month]) {
+      const formattedBirthDate = formatBirthDate(dayNumber, month, yearNumber);
+      setBirthDate(formattedBirthDate);
+      console.log(formattedBirthDate, "создание"); // логирую для проверки
+    } else {
+      console.error('Некорректные данные для формирования даты');
+    }
+  }
+}, [day, month, year, hasUserInteracted]);
+//------------сбор данных и отправка на сервер-----------------------
+const [password, setPassword] = useState('');
+const sendDataRegistration = async () => {
+  try {
+    setHasUserInteracted(true); //// Установить состояние взаимодействия, когда пользователь отправляет данные
+    // Извлекаем имя пользователя и логин из AsyncStorage
+    const dayNumber = parseInt(day, 10);
+    const yearNumber = parseInt(year, 10);
+    const validBirthDate = formatBirthDate(dayNumber, month, yearNumber);
+    const email = await AsyncStorage.getItem('email');
+    const password = await AsyncStorage.getItem('password');
+    const confirmPassword = await AsyncStorage.getItem('confirmPassword');
+    console.log(email, password, confirmPassword ,name, validBirthDate, "перед отправкой")
+    // Проверяем, что данные существуют
+    if (email && password && confirmPassword && name && validBirthDate) {
+      // Формируем данные для отправки
+      const requestData = {
+        user: {
+          email: email,
+          password: password,
+          password_confirmation: confirmPassword,
+          name: name,
+          birth_date: validBirthDate
+        }
+      };
+
+      // Отправляем POST-запрос на сервер
+      const response = await fetch(`${API_BASE_URL}/api/v1/registrations`, {
+        method: 'POST',  // Используем метод POST
+        headers: {
+          'Content-Type': 'application/json',  // Указываем, что передаем JSON
+        },
+        body: JSON.stringify(requestData),  // Преобразуем объект данных в JSON
+      });
+
+      // Обрабатываем ответ от сервера
+      if (response.ok) {
+        const responseData = await response.json();  // Если ответ успешный
+        const token = responseData.token;
+        await AsyncStorage.setItem('jwtToken', token); // записываю токен в ассинхронное хранилище
+        await AsyncStorage.removeItem('email'); // удаляю эмэйл из хранилища для безопасности
+        setPassword(''); // удаляю пароль из состояния для безопасности
+      } else {
+        console.error('Ошибка на сервере:', response.status);
+      }
+    } else {
+      console.error('все или некоторые данные отсутствуют');
+    }
+  } catch (error) {
+    console.error('Ошибка сети или запроса:', error);
+  }
+};
+//-------------------------------------------------------------------
   const months = [
     'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
     'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
@@ -124,7 +218,7 @@ export default function SignUp() {
         </View>
 
         {/* Кнопка Далее */}
-        <TouchableOpacity style={styles.continueButton} disabled={!isAgreed || !name || !day || !month || !year}>
+        <TouchableOpacity style={styles.continueButton} onPress={sendDataRegistration}>
           <Text style={styles.continueButtonText}>Далее</Text>
         </TouchableOpacity>
       </View>

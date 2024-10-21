@@ -11,7 +11,7 @@ export default function Login2() {
 //------------Здесь отправляются на сервер данные для входа-------------------------
 
   const [password, setPassword] = useState('');
-  const sendDataToServer = async () => {
+  const sendDataLogin = async () => {
     try {
       // Извлекаем имя пользователя и логин из AsyncStorage
       const login = await AsyncStorage.getItem('email');
@@ -93,7 +93,7 @@ export default function Login2() {
           <Text style={styles.buttonSignUp} onPress={undefined}>
             Забыли пароль?
           </Text>
-          <TouchableOpacity style={styles.continueButton} onPress={sendDataToServer}>
+          <TouchableOpacity style={styles.continueButton} onPress={sendDataLogin}>
             <Text style={styles.continueButtonText}>Войти</Text>
           </TouchableOpacity>
         </View>

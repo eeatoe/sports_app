@@ -15,7 +15,8 @@ export default function SignUp2() {
     if (password === confirmPassword) {
       try {
         // Сохраняем пароль в асинхронное хранилище
-        await AsyncStorage.setItem('userPassword', password);
+        await AsyncStorage.setItem('password', password);
+        await AsyncStorage.setItem('confirmPassword', confirmPassword);
         // Переход на следующий экран
         router.push('/SignUp3'); // 
       } catch (error) {
