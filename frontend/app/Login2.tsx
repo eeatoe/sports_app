@@ -1,9 +1,59 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_BASE_URL } from './config';
 
 export default function Login2() {
   
+  const router = useRouter();
+
+//------------Здесь отправляются на сервер данные для входа-------------------------
+
+  const [password, setPassword] = useState('');
+  const sendDataToServer = async () => {
+    try {
+      // Извлекаем имя пользователя и логин из AsyncStorage
+      const login = await AsyncStorage.getItem('email');
+      console.log(login,password)
+      // Проверяем, что данные существуют
+      if (password && login) {
+        // Формируем данные для отправки
+        const requestData = {
+          user: {
+            email: login,
+            password: password
+          }
+        };
+
+        // Отправляем POST-запрос на сервер
+        const response = await fetch(`${API_BASE_URL}/api/v1/sessions`, {
+          method: 'POST',  // Используем метод POST
+          headers: {
+            'Content-Type': 'application/json',  // Указываем, что передаем JSON
+          },
+          body: JSON.stringify(requestData),  // Преобразуем объект данных в JSON
+        });
+
+        // Обрабатываем ответ от сервера
+        if (response.ok) {
+          const responseData = await response.json();  // Если ответ успешный
+          const token = responseData.token;
+          await AsyncStorage.setItem('jwtToken', token); // записываю токен в ассинхронное хранилище
+          await AsyncStorage.removeItem('email'); // удаляю эмэйл из хранилища для безопасности
+          setPassword(''); // удаляю пароль из состояния для безопасности
+        } else {
+          console.error('Ошибка на сервере:', response.status);
+        }
+      } else {
+        console.error('Имя пользователя или логин не найдены в AsyncStorage');
+      }
+    } catch (error) {
+      console.error('Ошибка сети или запроса:', error);
+    }
+  };
+//---------------------------------------------------------------------------------------------
+
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
     text: string; // Определяем тип для текста
@@ -17,11 +67,11 @@ export default function Login2() {
       </View>
     );
   };
-
-
   const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
   const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
   const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+
+//-------------------------------------------------------------------------------------
   return (
     
     <View style={styles.container}>
@@ -32,6 +82,8 @@ export default function Login2() {
           <TextInput
           style={styles.input}
           placeholder="Введите пароль"
+          value={password}
+          onChangeText={setPassword}
           placeholderTextColor="#A0A0A0"
           textAlign="left"
           />
@@ -41,7 +93,7 @@ export default function Login2() {
           <Text style={styles.buttonSignUp} onPress={undefined}>
             Забыли пароль?
           </Text>
-          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+          <TouchableOpacity style={styles.continueButton} onPress={sendDataToServer}>
             <Text style={styles.continueButtonText}>Войти</Text>
           </TouchableOpacity>
         </View>

@@ -1,19 +1,31 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { useRouter, Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SignUp() {
-  const router = useRouter();
-  
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [redirectlogin, setRedirectlogin] = useState(false);
-  const handleRedirectLogin = () => {
-    setRedirectlogin(true);
-  };
-  if (redirectlogin) {
-    return <Redirect href="/Login" />; 
-  }
 
+  const router = useRouter(); // используется для маршрутизации
+
+//------Далее идёт логика ассинхронного хранилища email---------------------------
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+    const validateEmail = (email: string) => { // проверка на корректность email
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+  };
+  
+    const saveEmail = async () => {
+      if (validateEmail(email)) {
+        await AsyncStorage.setItem('email', email);
+        setError('');
+        router.push('/SignUp2'); //переход на следующую стр
+      } else {
+        setError('Неверный формат email');
+      }
+    };
+//----------------Далее идёт код иконок Google, Apple и Facebook-------------------------------------------
 
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
@@ -28,12 +40,20 @@ export default function SignUp() {
       </View>
     );
   };
-
-
-
   const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
   const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
   const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+
+//----------------Логика редиректа кнопки "уже есть аккаунт?"---------------------
+
+  const [redirectlogin, setRedirectlogin] = useState(false);
+  const handleRedirectSignUp = () => {
+    setRedirectlogin(true);
+  };
+  if (redirectlogin) {
+    return  <Redirect href="/Login" />; 
+  }
+//----------------------------------------------------------------------------------
   return (
     
     <View style={styles.container}>
@@ -44,16 +64,18 @@ export default function SignUp() {
           <TextInput
           style={styles.input}
           placeholder="Введите Email"
+          value={email}
+          onChangeText={setEmail}
           placeholderTextColor="#A0A0A0"
           textAlign="left"
           />
         </View>
         <View style={{ width: "100%", alignItems: "center" }}>
           <View style={styles.underline}></View>
-          <Text style={styles.buttonSignUp} onPress={handleRedirectLogin}>
+          <Text style={styles.buttonSignUp} onPress={handleRedirectSignUp }>
             Уже есть аккаунт?
           </Text>
-          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+          <TouchableOpacity style={styles.continueButton} onPress={saveEmail}>
             <Text style={styles.continueButtonText}>Далее</Text>
           </TouchableOpacity>
           <View style={styles.separatorContainer}>
@@ -67,11 +89,11 @@ export default function SignUp() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.google} onPress={undefined}>
             <Image source={iconGoogle} style={styles.icon} />
-            <Text style={{color: '#1F1F1F',fontSize: 16,textAlign: 'center'}}>Продолжить с Google</Text>
+            <Text style={{color: '#000000',fontSize: 16,textAlign: 'center',opacity: 0.54}}>Продолжить с Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Apple} onPress={undefined}>
             <Image source={iconApple} style={styles.iconApple} />
-            <Text style={{color: '#fff',fontSize: 16,textAlign: 'center'}}>Продолжить с Apple</Text>
+            <Text style={{color: '#F5F5F5',fontSize: 16,textAlign: 'center'}}>Продолжить с Apple</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -127,14 +149,13 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     backgroundColor: '#007BFF',
-    paddingVertical: 14,
+    paddingVertical: 18,
     borderRadius: 25,
     marginVertical: 10,
-    width: 237,
-    height: 55
+    width: "90%"
   },
   continueButtonText: {
-    color: '#fff',
+    color: '#F5F5F5',
     fontSize: 16,
     textAlign: 'center',
   },

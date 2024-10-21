@@ -1,10 +1,35 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
 
 export default function Login() {
+
   const router = useRouter();
+
+//------Далее идёт логика ассинхронного хранилища email---------------------------
+
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+
+    const validateEmail = (email: string) => {  //проверка корректности эмэйл
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+  };
   
+    const saveEmail = async () => {
+      if (validateEmail(email)) {
+        await AsyncStorage.setItem('email', email);
+        setError('');
+        router.push('/Login2'); //переход на следующую стр
+      } else {
+        Alert.alert('Неверный формат email');
+      }
+    };
+//-------------Далее идёт код иконок Google, Apple и Facebook---------------
+
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
     text: string; // Определяем тип для текста
@@ -18,19 +43,24 @@ export default function Login() {
       </View>
     );
   };
+  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
+  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
+  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
 
-  const [currentPage, setCurrentPage] = useState<number>(0);
+//----------Логика редиректа кнопки "нету аккаунта?"-----------------------------
+
   const [redirectlogin, setRedirectlogin] = useState(false);
   const handleRedirectSignUp = () => {
     setRedirectlogin(true);
   };
   if (redirectlogin) {
-    return <Redirect href="/SignUp" />; 
+    const sendDataToServer = async () => {
+      await AsyncStorage.removeItem('email')
+      
+    }
+    return  <Redirect href="/SignUp" />; 
   }
-
-  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
-  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
-  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+//-------------------------------------------------------------------------------
   return (
     
     <View style={styles.container}>
@@ -41,6 +71,8 @@ export default function Login() {
           <TextInput
           style={styles.input}
           placeholder="Введите Email"
+          value={email}
+          onChangeText={setEmail}
           placeholderTextColor="#A0A0A0"
           textAlign="left"
           />
@@ -50,7 +82,7 @@ export default function Login() {
           <Text style={styles.buttonSignUp} onPress={handleRedirectSignUp }>
             Ещё нет аккаунта?
           </Text>
-          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+          <TouchableOpacity style={styles.continueButton} onPress={saveEmail}>
             <Text style={styles.continueButtonText}>Далее</Text>
           </TouchableOpacity>
           <View style={styles.separatorContainer}>

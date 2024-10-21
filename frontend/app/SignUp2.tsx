@@ -1,14 +1,38 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SignUp2() {
   
+  //-----здесь будет логика ассинхронного хранилища-----------------
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const router = useRouter();
+
+  const handlePasswordSubmit = async () => {
+    if (password === confirmPassword) {
+      try {
+        // Сохраняем пароль в асинхронное хранилище
+        await AsyncStorage.setItem('userPassword', password);
+        // Переход на следующий экран
+        router.push('/SignUp3'); // 
+      } catch (error) {
+        Alert.alert('Ошибка', 'Не удалось сохранить пароль');
+      }
+    } else {
+      Alert.alert('Ошибка', 'Подтверждение пароля не совпадает');
+    }
+  };
+
+//----------Далее идёт код иконок Google, Apple и Facebook-----------------------------
+
   interface IconWithTextProps {
     iconSource: ImageSourcePropType; // Определяем тип для иконки
     text: string; // Определяем тип для текста
   }
-  
+
   const IconWithText: React.FC<IconWithTextProps> = ({ iconSource, text }) => {
     return (
       <View style={styles.container}>
@@ -18,10 +42,10 @@ export default function SignUp2() {
     );
   };
 
-
   const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
   const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
   const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+//-------------------------------------------------------------------------------------
   return (
     
     <View style={styles.container}>
@@ -34,6 +58,9 @@ export default function SignUp2() {
           placeholder="Введите пароль"
           placeholderTextColor="#A0A0A0"
           textAlign="left"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
           />
         </View>
         <View style={{ width: "100%", alignItems: "center" }}>
@@ -45,11 +72,14 @@ export default function SignUp2() {
           placeholder="Введите пароль"
           placeholderTextColor="#A0A0A0"
           textAlign="left"
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry={true}
           />
         </View>
           <View style={styles.underline}></View>
         
-          <TouchableOpacity style={styles.continueButton} onPress={undefined}>
+          <TouchableOpacity style={styles.continueButton} onPress={handlePasswordSubmit}>
             <Text style={styles.continueButtonText}>Далее</Text>
           </TouchableOpacity>
         </View>
