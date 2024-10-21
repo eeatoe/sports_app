@@ -1,195 +1,228 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
-import { useRouter,Redirect } from 'expo-router';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
 
-export default function SignUp2() {
-  
+export default function SignUp() {
+  const [name, setName] = useState('');
   const [day, setDay] = useState('');
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
+  const [daysInMonth, setDaysInMonth] = useState<number[]>([]);
+  const [isAgreed, setIsAgreed] = useState(false);
 
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
-    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 
+    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
     'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
   ];
+
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+  const years = Array.from({ length: currentYear - 1923 }, (_, i) => currentYear - i);
 
+  useEffect(() => {
+    const calculateDaysInMonth = (month: string, year: string) => {
+      const monthIndex = months.indexOf(month);
+      let days = 31;
 
-  interface IconWithTextProps {
-    iconSource: ImageSourcePropType; // Определяем тип для иконки
-    text: string; // Определяем тип для текста
-  }
-  
-  const IconWithText: React.FC<IconWithTextProps> = ({ iconSource, text }) => {
-    return (
-      <View style={styles.container}>
-        <Image source={iconSource} style={styles.icon} />
-        <Text style={styles.text}>{text}</Text>
-      </View>
-    );
-  };
+      if (monthIndex === 1) { // Февраль
+        days = (parseInt(year) % 4 === 0 && parseInt(year) % 100 !== 0) || parseInt(year) % 400 === 0 ? 29 : 28;
+      } else if ([3, 5, 8, 10].includes(monthIndex)) {
+        days = 30;
+      }
 
+      setDaysInMonth(Array.from({ length: days }, (_, i) => i + 1));
+    };
 
-  const iconFacebook: ImageSourcePropType = require('@/assets/images/facebook.png');
-  const iconGoogle: ImageSourcePropType = require('@/assets/images/Google.png');
-  const iconApple: ImageSourcePropType = require('@/assets/images/Apple.png');
+    if (month && year) {
+      calculateDaysInMonth(month, year);
+    }
+  }, [month, year]);
+
   return (
-    
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.text}>Регистрация</Text>
       <View style={styles.border}>
-        <View style={{width: "100%"}}>
-          <Text style={{ fontSize: 14, color: "#fff",paddingLeft: 10, }}>Имя</Text>
+        <View style={{ width: '100%' }}>
+          <Text style={{ fontSize: 14, color: '#fff', paddingLeft: 10 }}>Имя</Text>
           <TextInput
-          style={styles.input}
-          placeholder="Введите пароль"
-          placeholderTextColor="#A0A0A0"
-          textAlign="left"
+            style={styles.input}
+            placeholder="Введите свое имя"
+            placeholderTextColor="#A0A0A0"
+            textAlign="left"
+            value={name}
+            onChangeText={setName}
           />
         </View>
-        <View style={{ width: "100%", alignItems: "center" }}>
-          <View style={styles.underline}></View>
-        <View style={{width: "100%"}}>
-        <Text style={{ fontSize: 14, color: "#fff",paddingLeft: 10, }}>Дата рождения</Text>
+
+        <Text style={{ fontSize: 14, color: '#fff', paddingLeft: 10 }}>Дата рождения</Text>
+        <View style={styles.selectorContainer}>
+          {/* Выбор дня */}
+          <ModalSelector
+            data={daysInMonth.map((d) => ({ key: d, label: d.toString() }))}
+            initValue="День"
+            onChange={(option) => setDay(option.label)}
+            style={styles.modalSelector}
+            initValueTextStyle={styles.selectorText}
+            selectTextStyle={styles.selectorText}
+          >
+            <TextInput
+              style={styles.input}
+              editable={false}
+              placeholder="День"
+              placeholderTextColor="#A0A0A0"
+              value={day}
+            />
+          </ModalSelector>
+
+          {/* Выбор месяца */}
+          <ModalSelector
+            data={months.map((m, index) => ({ key: index, label: m }))}
+            initValue="Месяц"
+            onChange={(option) => setMonth(option.label)}
+            style={styles.modalSelector}
+            initValueTextStyle={styles.selectorText}
+            selectTextStyle={styles.selectorText}
+          >
+            <TextInput
+              style={styles.input}
+              editable={false}
+              placeholder="Месяц"
+              placeholderTextColor="#A0A0A0"
+              value={month}
+            />
+          </ModalSelector>
+
+          {/* Выбор года */}
+          <ModalSelector
+            data={years.map((y) => ({ key: y, label: y.toString() }))}
+            initValue="Год"
+            onChange={(option) => setYear(option.label)}
+            style={styles.modalSelector}
+            initValueTextStyle={styles.selectorText}
+            selectTextStyle={styles.selectorText}
+          >
+            <TextInput
+              style={styles.input}
+              editable={false}
+              placeholder="Год"
+              placeholderTextColor="#A0A0A0"
+              value={year}
+            />
+          </ModalSelector>
         </View>
+
+        {/* Кастомный чекбокс */}
+        <View style={styles.checkboxContainer}>
+          <TouchableOpacity
+            style={styles.checkbox}
+            onPress={() => setIsAgreed(!isAgreed)}
+          >
+            {isAgreed ? <View style={styles.checkedBox} /> : null}
+          </TouchableOpacity>
+          <Text style={styles.checkboxText}>
+            Регистрируясь, вы подтверждаете, что ознакомились с Условиями использования и Политикой конфиденциальности Fitly и соглашаетесь с ним.
+          </Text>
         </View>
+
+        {/* Кнопка Далее */}
+        <TouchableOpacity style={styles.continueButton} disabled={!isAgreed || !name || !day || !month || !year}>
+          <Text style={styles.continueButtonText}>Далее</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start',
+    flexGrow: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1F1F1F', 
-    paddingTop: 120
+    backgroundColor: '#1F1F1F',
+    paddingVertical: 20,
   },
   border: {
-    marginBottom: 40,
-    alignItems: "flex-start",
-    marginTop: 50,
+    padding: 20,
     borderRadius: 20,
-    width: 311,
-    height: 387,
+    borderColor: '#E5E8EE',
     borderWidth: 1,
-    borderColor: "#E5E8EE",
-    padding: 15,
+    width: 311,
+    backgroundColor: '#1F1F1F',
   },
   text: {
     fontSize: 34,
-    color: "#fff",
+    color: '#fff',
     fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   input: {
     height: 40,
-    borderColor: '#1F1F1F',
-    borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 10,
-    color: "#fff"
+    color: '#A0A0A0',
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E8EE',
   },
-  underline: {
-    marginBottom: 60,
-    height: 2,
-    backgroundColor: '#fff',
-    marginTop: -20,
-    width: '92%',
+  selectorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
   },
-  buttonSignUp: {
-    marginBottom: 10,
-    textAlign: "left",
-    fontSize: 12,
-    color: "#A0A0A0",
-    textDecorationLine: 'underline',
+  modalSelector: {
+    flex: 1,
+    marginHorizontal: 5,
+    backgroundColor: '#1F1F1F',
+    borderBottomWidth: 0,
+    borderBottomColor: '#E5E8EE',
+    elevation: 0,
+  },
+  selectorText: {
+    color: '#fff',
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderColor: '#E5E8EE',
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checkedBox: {
+    width: 12,
+    height: 12,
+    backgroundColor: '#A0A0A0',
+  },
+  checkboxText: {
+    color: '#A0A0A0',
+    fontSize: 8,
   },
   continueButton: {
     backgroundColor: '#007BFF',
     paddingVertical: 18,
     borderRadius: 25,
-    marginVertical: 10,
-    width: "90%"
+    width: '100%',
+    alignItems: 'center',
   },
   continueButtonText: {
-    color: '#F5F5F5',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  separatorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 40, // Отступ сверху и снизу для разделителя
-    marginBottom: 19
-  },
-  separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#A0A0A0', // Цвет полос
-    marginHorizontal: 5, // Отступ между текстом и полосами
-  },
-  separatorText: {
-    color: "#A0A0A0",
+    color: '#A0A0A0',
     fontSize: 16,
   },
-  facebook: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#007BFF',
-    padding: 18,
-    borderRadius: 25,
-    width: 311
-  },
-  google: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#fff',
-    padding: 18,
-    borderRadius: 25,
-    marginTop: 25,
-    width: 311
-  },
-  Apple: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#000000',
-    padding: 18,
-    borderRadius: 25,
-    marginTop: 25,
-    width: 311,
-  },
-  icon: {
-    width: 24, // Ширина иконки
-    height: 24, // Высота иконки
-    marginRight: 10, // Отступ между иконкой и текстом
-  },
-  iconApple: {
-    width: 25, // Ширина иконки
-    height: 31, // Высота иконки
-    marginRight: 10, // Отступ между иконкой и текстом
-  },
-  containerData: {
-    margin: 20,
-  },
-  label: {
+  dateLabel: {
+    color: '#A0A0A0',
     fontSize: 14,
     marginBottom: 10,
-    color: '#fff',
   },
-  pickerContainer: {
+  dateSelectorContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-    picker: {
-    flex: 1,
-    height: 20,
-    color: '#fff',  // Цвет текста в выпадающем списке
-    backgroundColor: '#333', // Цвет фона выпадающего списка
-    marginHorizontal: 5,
+    marginBottom: 16,
   },
 });
