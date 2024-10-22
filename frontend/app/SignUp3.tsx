@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Colors from '../constants/Colors';
 import { API_BASE_URL } from './config';
 
 export default function SignUp() {
@@ -12,7 +13,6 @@ export default function SignUp() {
   const [daysInMonth, setDaysInMonth] = useState<number[]>([]);
   const [isAgreed, setIsAgreed] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
-  const [birthDate, setBirthDate] = useState('');
 //-----------подготовка данных к отправке на сервер------------------
   const monthNames: { [key: string]: string } = {
     Январь: '01',
@@ -38,19 +38,6 @@ function formatBirthDate(day: number, month: string, year: number): string {
   return `${year}-${monthNumber}-${formattedDay}`;
 }
 
-useEffect(() => {
-  if (hasUserInteracted && day && month && year) {
-    const dayNumber = parseInt(day, 10);
-    const yearNumber = parseInt(year, 10);
-    if (!isNaN(dayNumber) && !isNaN(yearNumber) && monthNames[month]) {
-      const formattedBirthDate = formatBirthDate(dayNumber, month, yearNumber);
-      setBirthDate(formattedBirthDate);
-      console.log(formattedBirthDate, "создание"); // логирую для проверки
-    } else {
-      console.error('Некорректные данные для формирования даты');
-    }
-  }
-}, [day, month, year, hasUserInteracted]);
 //------------сбор данных и отправка на сервер-----------------------
 const [password, setPassword] = useState('');
 const sendDataRegistration = async () => {
@@ -136,18 +123,18 @@ const sendDataRegistration = async () => {
       <Text style={styles.text}>Регистрация</Text>
       <View style={styles.border}>
         <View style={{ width: '100%' }}>
-          <Text style={{ fontSize: 14, color: '#fff', paddingLeft: 10 }}>Имя</Text>
+          <Text style={{ fontSize: 14, color: Colors.primaryColor, paddingLeft: 10 }}>Имя</Text>
           <TextInput
             style={styles.input}
             placeholder="Введите свое имя"
-            placeholderTextColor="#A0A0A0"
+            placeholderTextColor={Colors.secondaryColor}
             textAlign="left"
             value={name}
             onChangeText={setName}
           />
         </View>
 
-        <Text style={{ fontSize: 14, color: '#fff', paddingLeft: 10 }}>Дата рождения</Text>
+        <Text style={{ fontSize: 14, color: Colors.secondaryColor, paddingLeft: 10 }}>Дата рождения</Text>
         <View style={styles.selectorContainer}>
           {/* Выбор дня */}
           <ModalSelector
@@ -162,7 +149,7 @@ const sendDataRegistration = async () => {
               style={styles.input}
               editable={false}
               placeholder="День"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor={Colors.secondaryColor}
               value={day}
             />
           </ModalSelector>
@@ -180,7 +167,7 @@ const sendDataRegistration = async () => {
               style={styles.input}
               editable={false}
               placeholder="Месяц"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor={Colors.secondaryColor}
               value={month}
             />
           </ModalSelector>
@@ -198,7 +185,7 @@ const sendDataRegistration = async () => {
               style={styles.input}
               editable={false}
               placeholder="Год"
-              placeholderTextColor="#A0A0A0"
+              placeholderTextColor={Colors.secondaryColor}
               value={year}
             />
           </ModalSelector>
@@ -231,21 +218,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1F1F1F',
+    backgroundColor: Colors.background,
     paddingVertical: 20,
   },
   border: {
     padding: 20,
     borderRadius: 20,
-    borderColor: '#E5E8EE',
+    borderColor: Colors.borderColor,
     borderWidth: 1,
     width: 311,
-    backgroundColor: '#1F1F1F',
+    backgroundColor: Colors.background,
   },
   text: {
     fontSize: 34,
-    color: '#fff',
-    fontWeight: 'bold',
+    color: Colors.primaryColor,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -253,11 +239,11 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 16,
     paddingHorizontal: 10,
-    color: '#A0A0A0',
+    color: Colors.secondaryColor,
     backgroundColor: 'transparent',
     textAlign: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E8EE',
+    borderBottomColor: Colors.borderColor,
   },
   selectorContainer: {
     flexDirection: 'row',
@@ -267,13 +253,13 @@ const styles = StyleSheet.create({
   modalSelector: {
     flex: 1,
     marginHorizontal: 5,
-    backgroundColor: '#1F1F1F',
+    backgroundColor: Colors.background,
     borderBottomWidth: 0,
-    borderBottomColor: '#E5E8EE',
+    borderBottomColor: Colors.borderColor,
     elevation: 0,
   },
   selectorText: {
-    color: '#fff',
+    color: Colors.primaryColor,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -284,7 +270,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderWidth: 2,
-    borderColor: '#E5E8EE',
+    borderColor: Colors.borderColor,
     marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -292,25 +278,25 @@ const styles = StyleSheet.create({
   checkedBox: {
     width: 12,
     height: 12,
-    backgroundColor: '#A0A0A0',
+    backgroundColor: Colors.secondaryColor,
   },
   checkboxText: {
-    color: '#A0A0A0',
+    color: Colors.secondaryColor,
     fontSize: 8,
   },
   continueButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.primaryColor,
     paddingVertical: 18,
     borderRadius: 25,
     width: '100%',
     alignItems: 'center',
   },
   continueButtonText: {
-    color: '#A0A0A0',
+    color: Colors.buttonText,
     fontSize: 16,
   },
   dateLabel: {
-    color: '#A0A0A0',
+    color: Colors.secondaryColor,
     fontSize: 14,
     marginBottom: 10,
   },

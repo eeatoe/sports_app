@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageSource
 import { useRouter, Redirect } from 'expo-router';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Colors from '../constants/Colors';
 
 export default function SignUp2() {
   
@@ -57,7 +58,7 @@ export default function SignUp2() {
           <TextInput
           style={styles.input}
           placeholder="Введите пароль"
-          placeholderTextColor="#A0A0A0"
+          placeholderTextColor={Colors.secondaryColor}
           textAlign="left"
           value={password}
           onChangeText={setPassword}
@@ -71,7 +72,7 @@ export default function SignUp2() {
         <TextInput  
           style={styles.input}
           placeholder="Введите пароль"
-          placeholderTextColor="#A0A0A0"
+          placeholderTextColor={Colors.secondaryColor}
           textAlign="left"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#1F1F1F', 
+    backgroundColor: Colors.background, 
     paddingTop: 120
   },
   border: {
@@ -105,26 +106,25 @@ const styles = StyleSheet.create({
     width: 311,
     height: 387,
     borderWidth: 1,
-    borderColor: "#E5E8EE",
+    borderColor: Colors.borderColor,
     padding: 15,
   },
   text: {
     fontSize: 34,
-    color: "#fff",
-    fontWeight: 'bold',
+    color: Colors.primaryColor,
   },
   input: {
     height: 40,
-    borderColor: '#1F1F1F',
+    borderColor: Colors.background,
     borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 10,
-    color: "#fff"
+    color: Colors.primaryColor
   },
   underline: {
     marginBottom: 60,
     height: 2,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.primaryColor,
     marginTop: -20,
     width: '92%',
   },
@@ -132,18 +132,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "left",
     fontSize: 12,
-    color: "#A0A0A0",
+    color: Colors.secondaryColor,
     textDecorationLine: 'underline',
   },
   continueButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.primaryColor,
     paddingVertical: 18,
     borderRadius: 25,
     marginVertical: 10,
     width: "90%"
   },
   continueButtonText: {
-    color: '#F5F5F5',
+    color: Colors.buttonText,
     fontSize: 16,
     textAlign: 'center',
   },
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: 1,
-    backgroundColor: '#A0A0A0', // Цвет полос
+    backgroundColor: Colors.secondaryColor, // Цвет полос
     marginHorizontal: 5, // Отступ между текстом и полосами
   },
   separatorText: {
-    color: "#A0A0A0",
+    color: Colors.secondaryColor,
     fontSize: 16,
   },
   facebook: {

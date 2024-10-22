@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
 import { useNavigation } from '@react-navigation/native'; // для маршрутизации
 import { Redirect } from "expo-router"
+import Colors from '../constants/Colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -48,7 +49,7 @@ export default function WelcomePage() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
       <TouchableOpacity style={styles.button_skip} onPress={handleRedirectLogin}>
         <Text style={styles.buttonText}>Пропустить</Text>
       </TouchableOpacity>
@@ -90,12 +91,12 @@ export default function WelcomePage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1F1F1F',
+    backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
   button_skip: {
-    backgroundColor: '#2b2b2b',
+    backgroundColor: Colors.background,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: Colors.primaryColor,
     fontSize: 16,
   },
   scrollView: {
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   continueButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.primaryColor,
     paddingVertical: 12,
     width: width - 20,
     maxWidth: 360,
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   continueButtonText: {
-    color: '#fff',
+    color: Colors.buttonText,
     fontSize: 16,
     textAlign: 'center',
   },
