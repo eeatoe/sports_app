@@ -57,9 +57,8 @@ export default function Login() {
   if (redirectlogin) {
     const sendDataToServer = async () => {
       await AsyncStorage.removeItem('email')
-      
     }
-    return  <Redirect href="/SignUp" />; 
+    return  <Redirect href="./SignUp" />;
   }
 //-------------------------------------------------------------------------------
   return (

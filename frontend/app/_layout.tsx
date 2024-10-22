@@ -6,6 +6,7 @@ export default function RootLayout() {
     // (включи headerShown чтобы их показать. В заголовках есть возвраты назад если это
     // Подразумевается приложением)
     <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="index" options={{ title: 'index', headerShown: false }} />
       <Stack.Screen name="WelcomePage" options={{ title: 'WelcomePage', headerShown: false }} />
       <Stack.Screen name="Login" options={{ title: 'Login', headerShown: false }} />
