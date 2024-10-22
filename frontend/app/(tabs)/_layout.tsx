@@ -12,10 +12,10 @@ export default function TabLayout() {
         options={{
           title: 'Статистика',
           headerStyle: {
-            backgroundColor: 'black',  // Черный фон заголовка
+            backgroundColor: Colors.background,  // Черный фон заголовка
           },
           headerTitleStyle: {
-            color: 'white',           // Белый цвет текста заголовка
+            color: Colors.primaryColor,           // Белый цвет текста заголовка
             fontSize: 32,             // Размер текста 32
             fontWeight: 'bold',       // Жирный шрифт
           },
@@ -26,10 +26,10 @@ export default function TabLayout() {
         options={{
           title: 'Календарь',
           headerStyle: {
-            backgroundColor: 'black',
+            backgroundColor: Colors.background,
           },
           headerTitleStyle: {
-            color: 'white',
+            color: Colors.primaryColor,
             fontSize: 32,
             fontWeight: 'bold',
           },
@@ -74,10 +74,10 @@ export default function TabLayout() {
         options={{
           title: 'Профиль',
           headerStyle: {
-            backgroundColor: 'black',
+            backgroundColor: Colors.background,
           },
           headerTitleStyle: {
-            color: 'white',
+            color: Colors.primaryColor,
             fontSize: 32,
             fontWeight: 'bold',
           },
