@@ -43,6 +43,7 @@ export default function Login2() {
           await AsyncStorage.setItem('jwtToken', token); // записываю токен в ассинхронное хранилище
           await AsyncStorage.removeItem('email'); // удаляю эмэйл из хранилища для безопасности
           setPassword(''); // удаляю пароль из состояния для безопасности
+          <Redirect href="/Workout"/>;
         } else {
           console.error('Ошибка на сервере:', response.status);
         }

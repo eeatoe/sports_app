@@ -53,7 +53,7 @@ export default function SignUp() {
     setRedirectlogin(true);
   };
   if (redirectlogin) {
-    return  <Redirect href="/Login" />; 
+    return  <Redirect href="./Statistics" />; 
   }
 //----------------------------------------------------------------------------------
   return (

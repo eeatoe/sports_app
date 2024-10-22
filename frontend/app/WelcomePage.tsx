@@ -16,7 +16,7 @@ export default function WelcomePage() {
     setRedirectlogin(true);
   };
   if (redirectlogin) {
-    return <Redirect href="/Login" />; 
+    return <Redirect href="/Workout" />; 
   }
 
   const images = [

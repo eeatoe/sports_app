@@ -4,6 +4,7 @@ import ModalSelector from 'react-native-modal-selector';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Colors from '../constants/Colors';
 import { API_BASE_URL } from './config';
+import { useRouter, Redirect } from 'expo-router';
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -80,6 +81,7 @@ const sendDataRegistration = async () => {
         await AsyncStorage.setItem('jwtToken', token); // записываю токен в ассинхронное хранилище
         await AsyncStorage.removeItem('email'); // удаляю эмэйл из хранилища для безопасности
         setPassword(''); // удаляю пароль из состояния для безопасности
+        <Redirect href="/Workout"/>;
       } else {
         console.error('Ошибка на сервере:', response.status);
       }
