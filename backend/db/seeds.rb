@@ -7,3 +7,28 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+muscle_groups = [
+  "Muscles of the Head",
+  "Masticatory Muscles",
+  "Facial Muscles",
+  "Muscles of the Neck",
+  "Muscles of the Torso",
+  "Muscles of the Chest",
+  "Muscles of the Abdomen",
+  "Muscles of the Back",
+  "Muscles of the Upper Limbs",
+  "Muscles of the Shoulder Girdle",
+  "Muscles of the Arm",
+  "Muscles of the Forearm",
+  "Muscles of the Hand",
+  "Muscles of the Lower Limbs",
+  "Muscles of the Pelvic Girdle",
+  "Muscles of the Thigh",
+  "Muscles of the Leg",
+  "Muscles of the Foot"
+]
+
+muscle_groups.each do |group|
+  MuscleGroup.find_or_create_by(name: group)
+end

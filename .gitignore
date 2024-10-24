@@ -1,0 +1,15 @@
+
+# Ignore bundler config.
+backend/.bundle
+
+# Ignore all logfiles and temp files.
+backend/log/*
+backend/tmp/*
+!backend/log/.keep
+!backend/tmp/.keep
+
+# Ignore master key for decrypting credentials and more.
+backend/config/master.key
+
+# Ignore system generated files
+*.DS_Store
